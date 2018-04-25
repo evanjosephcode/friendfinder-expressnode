@@ -1,39 +1,41 @@
-// module.exports = function apiRoutes(app) {
-//     const express = require("express");
-//     const bodyParser = require("body-parser");
-//     const path = require("path");
-//     let tables = require("./../data/tables.js");
-//     let waitlist = require("./../data/waitlist.js");
+module.exports = function apiRoutes(app) {
+    const express = require("express");
+    const bodyParser = require("body-parser");
+    const path = require("path");
+    let friends = require("./../data/friends.js");
 
-//     app.get("/api/tables", (req, res) => {
-//         return res.json(tables);
-//     });
+    // console.log("stuff");
 
-//     app.get("/api/waitlist", (req, res) => {
-//         return res.json(waitlist);
-//     });
+    app.get("/api/friends", (req, res) => {
+        return res.json(friends);
+        console.log("stuff");
+        console.log(req.body);
+    });
 
-//     app.post("/api/clear", (req, res) => {
-//         tables.length = 0;
-//         waitlist.length = 0;
-//     });
+    app.post("/api/friends", (req, res) => {
+        let totalDifference;
+        let differenceArray = [];
+        let newfriend = req.body;
+        // console.log(newfriend);
+
+    });
 
 
-//     app.post("/api/tables", (req, res) => {
+    app.post("/api/friends", (req, res) => {
 
-//         let newRes = req.body;
-//         //   logging the object of userinputs 
-//         console.log(newRes);
+        let newRes = req.body;
+        //   logging the object of userinputs 
+        console.log(newRes);
 
-//         if (tables.length < 5) {
-//             tables.push(newRes);
-//             res.json(true);
-//         } else {
-//             waitlist.push(newRes);
-//             res.json(false);
-//         }
+        if (friends.length < 5) {
+            friends.push(newRes);
+            res.json(true);
+        } else {
+            friends.push(newRes);
+            res.json(false);
+        }
 
-//         res.json(tables);
+        res.json(friends);
 
-//     });
-// }
+    });
+}
