@@ -8,8 +8,8 @@ module.exports = function apiRoutes(app) {
 
     app.get("/api/friends", (req, res) => {
         return res.json(friends);
-        console.log("stuff");
-        console.log(req.body);
+        // console.log("stuff");
+        // console.log(req.body);
     });
 
     app.post("/api/friends", (req, res) => {
@@ -17,25 +17,11 @@ module.exports = function apiRoutes(app) {
         let differenceArray = [];
         let newfriend = req.body;
         // console.log(newfriend);
+        friends.push(newfriend);
+
 
     });
 
 
-    app.post("/api/friends", (req, res) => {
 
-        let newRes = req.body;
-        //   logging the object of userinputs 
-        console.log(newRes);
-
-        if (friends.length < 5) {
-            friends.push(newRes);
-            res.json(true);
-        } else {
-            friends.push(newRes);
-            res.json(false);
-        }
-
-        res.json(friends);
-
-    });
 }
